@@ -28,13 +28,32 @@
       the hadoop configuration parameter ```"mapred.job.reuse.jvm.num.tasks"```.
       
        
- 4.  <h4> What is the high level overview of Execution Model of Spark?</h4>   
+3.  <h4> What is the high level overview of Execution Model of Spark?</h4>
+      
+      <img src="../img/Spark-execution-model.svg">
+      
+      - **Driver**
+      This is the **main** program of the Spark Application. It **instantiates a SparkContext**. Based on the Spark Application code in the driver, A **logical plan** is created which is used to **create a DAG** which translates to an **Execution Plan** which is divided into **stages** consiting of **tasks** which will be **executed on the Workers**.
+      There is no data processing happening in the driver.
+
+      - **Spark Context**
+      This serves as an link or bridge which enables the Driver to communicate with the Cluster Manger. Some possible
+      examples of SparkContext's use are **Negotiate Resources**, **Change Mmemory, cores requested in executors**, **create RDDs on cluster, Create Accumulators, Create Broadcast variables**.
+
+      - **Cluster Manger**
+      Is a resource manager which is aware of the distributed workers in the cluster and its resources. It also serves as
+      a resource negotiator for the Spark Application. The clsuter manger decides which tasks are schedueld on which worker nodes based on the data avaible on the node.
+
+      - **Workers**
+      Are distributed nodes in the cluster, the workers have a cretain capacity based on the Meomory/CPU avaible on the machines.
+      
+      - **Executors**
+      Is an Java process, For example an JVM running in an Yarn container. This is where the data processing happens.
  
-       
+      - **Executor Cores**
+      Number of threads which each container can run to process the tasks
       
-      
-      
- 5. <h4> What are the available Cluster Mangers for Spark? </h4>
+ 4. <h4> What are the available Cluster Mangers for Spark? </h4>
  
        - YARN. From the hadoop world, Works as a Resource manger.
        
