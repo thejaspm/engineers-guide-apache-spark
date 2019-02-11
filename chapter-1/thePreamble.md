@@ -27,7 +27,18 @@
       **Hadoop** the JVM can be reused between MR tasks spawned on the same worker, however this is subtely diffrent and needs knowledge of 
       the hadoop configuration parameter ```"mapred.job.reuse.jvm.num.tasks"```.
       
+       
+ 4.  <h4> What is the high level overview of Execution Model of Spark?</h4>   
+ 
+       
       
       
       
+ 5. <h4> What are the available Cluster Mangers for Spark? </h4>
+ 
+       - YARN. From the hadoop world, Works as a Resource manger.
+       
+       - Mesos.
+       
+       - Standalone.
      
